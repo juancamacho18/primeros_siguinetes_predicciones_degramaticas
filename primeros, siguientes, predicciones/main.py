@@ -118,8 +118,11 @@ if __name__=="__main__":
         no_terminales=set(gramatica.keys())
         terminales=set()
         for producciones in gramatica.values():
+            print(producciones)
             for prod in producciones:
+                print(prod)
                 for simbolo in prod:
+                    print(simbolo)
                     if simbolo not in gramatica and simbolo!='ε':
                         terminales.add(simbolo)
 
@@ -128,7 +131,7 @@ if __name__=="__main__":
         prediccion=Predicciones(gramatica, primero, siguiente)
 
         print("\nPrimeros:")
-        for pri in gramatica.keys():
+        for pri in no_terminales:
             print(f"Primero({pri})= {primero[pri]}")
 
         print("\nSiguientes:")
