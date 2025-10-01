@@ -20,6 +20,11 @@ def leer_gramatica(nombre_archivo):
 
 def Primeros(gramatica, terminales):
     primero={}
+    todos_los_simbolos=set()
+    for producciones in gramatica.values():
+        for produccion in producciones:
+            todos_los_simbolos.update(produccion)
+    todos_los_simbolos.update(gramatica.keys())  
 
     def obtener_primero(simbolo):
         if simbolo in primero:
@@ -32,24 +37,16 @@ def Primeros(gramatica, terminales):
         for produccion in gramatica.get(simbolo, []):
             for s in produccion:
                 primeros_s=obtener_primero(s)
-                primero[simbolo].update(primeros_s - {'ε'})
+                primero[simbolo].update(primeros_s-{'ε'})
                 if 'ε' not in primeros_s:
                     break
             else:
                 primero[simbolo].add('ε')
         return primero[simbolo]
-
-    todos_los_simbolos=set()
-    for producciones in gramatica.values():
-        for produccion in producciones:
-            todos_los_simbolos.update(produccion)
-    todos_los_simbolos.update(gramatica.keys())  
-
+    
     for simbolo in todos_los_simbolos:
         obtener_primero(simbolo)
-
     return primero
-
 
 def Siguientes(gramatica, primero, simbolo_inicial):
     siguiente={}
@@ -118,11 +115,8 @@ if __name__=="__main__":
         no_terminales=set(gramatica.keys())
         terminales=set()
         for producciones in gramatica.values():
-            print(producciones)
             for prod in producciones:
-                print(prod)
                 for simbolo in prod:
-                    print(simbolo)
                     if simbolo not in gramatica and simbolo!='ε':
                         terminales.add(simbolo)
 
@@ -142,4 +136,4 @@ if __name__=="__main__":
         for regla in prediccion:
             print(f"{regla} {prediccion[regla]}")
     else:
-        print("Gramática no valida.")
+        print("Gramatica no valida.")
