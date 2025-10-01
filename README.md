@@ -110,4 +110,4 @@ y al probar este ejemplo con el programa, la salida fue esta:
 >F -> pari E pard {'pari'}
 
 
-Esto mismo aplicabel para gramatica que tengan recursividad por la derecha o por la izquierda, el programa es apto y funciona para cualquier gramatica siempre y cuando se defina correctamente en el archivo de texto; definiendo la asignación manualmente como -> y el ε como vacio, si no se cumplen con esas condiciones el programa no aceptara la gramatica.
+Esto mismo aplicable para gramaticas que tengan recursividad por la derecha o por la izquierda, el programa es apto y funciona para cualquier gramatica siempre y cuando se defina correctamente en el archivo de texto; definiendo la asignación manualmente como -> y el ε como vacio, si no se cumplen con esas condiciones el programa no aceptara la gramatica.
